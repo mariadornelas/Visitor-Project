@@ -1,6 +1,5 @@
 package com.faculdade.sensor;
 
-/** Cliente de demonstração: uma estrutura, várias operações, nenhuma delas dentro dos sensores. */
 public class App {
 
     public static void main(String[] args) {

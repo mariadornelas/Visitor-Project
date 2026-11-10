@@ -1,9 +1,5 @@
 package com.faculdade.sensor;
 
-/**
- * ConcreteVisitor 2: classifica o risco. Os limites de cada grandeza vivem aqui,
- * e não nos sensores. Para uma linha, o risco é o do seu pior elemento.
- */
 public class AvaliadorRisco implements Visitante<Nivel> {
 
     @Override

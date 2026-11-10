@@ -7,10 +7,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/** Os elementos: dados válidos e, principalmente, o despacho duplo de {@code aceitar}. */
 class ElementosTest {
 
-    /** Visitante espião: devolve o nome do método chamado e guarda o elemento recebido. */
     private static class Espiao implements Visitante<String> {
         final List<Object> recebidos = new ArrayList<>();
 
@@ -39,8 +37,6 @@ class ElementosTest {
         }
     }
 
-    // ---- despacho duplo ----
-
     @Test
     void cadaElementoDeveChamarOMetodoVisitarDoSeuProprioTipo() {
         Espiao espiao = new Espiao();
@@ -53,7 +49,6 @@ class ElementosTest {
 
     @Test
     void despachoDeveSerPeloTipoRealMesmoComTipoEstaticoGenerico() {
-        // As variáveis têm o tipo ESTÁTICO mais genérico possível; quem decide é o tipo real.
         Elemento t = new SensorTemperatura("T", 0, 20);
         Sensor p = new SensorPressao("P", 0, 5);
         Elemento v = new SensorVibracao("V", 0, 2);
@@ -100,8 +95,6 @@ class ElementosTest {
         assertEquals(42, new SensorVibracao("V", 0, 2).aceitar(constante));
     }
 
-    // ---- dados dos sensores ----
-
     @Test
     void sensoresDevemExporSeusDados() {
         SensorTemperatura t = new SensorTemperatura("T-01", 1500, 85.5);
@@ -139,8 +132,6 @@ class ElementosTest {
         assertDoesNotThrow(() -> new SensorVibracao("V", 0, 0));
     }
 
-    // ---- linha ----
-
     @Test
     void linhaDeveGuardarOsFilhosNaOrdem() {
         SensorTemperatura t = new SensorTemperatura("T", 0, 20);
@@ -164,7 +155,7 @@ class ElementosTest {
         Elemento[] original = {new SensorTemperatura("T", 0, 20)};
         LinhaProducao linha = new LinhaProducao("L1", original);
 
-        original[0] = new SensorPressao("P", 0, 5);   // mexer no array depois não pode afetar a linha
+        original[0] = new SensorPressao("P", 0, 5);
 
         assertInstanceOf(SensorTemperatura.class, linha.getElementos().get(0));
     }

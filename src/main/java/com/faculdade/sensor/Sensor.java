@@ -2,7 +2,6 @@ package com.faculdade.sensor;
 
 import java.util.Objects;
 
-/** Dados comuns a todo sensor. Imutável: um visitante lê, nunca altera. */
 public abstract class Sensor implements Elemento {
 
     private final String id;

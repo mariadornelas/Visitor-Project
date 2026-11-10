@@ -1,6 +1,5 @@
 package com.faculdade.sensor;
 
-/** ConcreteElement: pressão em bar. */
 public class SensorPressao extends Sensor {
 
     private final double bar;

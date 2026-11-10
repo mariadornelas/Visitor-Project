@@ -3,11 +3,6 @@ package com.faculdade.sensor;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * ConcreteVisitor 3: lista os ids dos sensores que já passaram do intervalo de
- * manutenção. O intervalo depende do tipo: temperatura 2000 h, pressão 1000 h,
- * vibração 500 h. Usa um dado diferente dos outros visitantes (horas de operação).
- */
 public class PlanoManutencao implements Visitante<List<String>> {
 
     @Override

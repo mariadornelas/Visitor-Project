@@ -1,6 +1,5 @@
 package com.faculdade.sensor;
 
-/** ConcreteElement: temperatura em °C. */
 public class SensorTemperatura extends Sensor {
 
     private final double celsius;

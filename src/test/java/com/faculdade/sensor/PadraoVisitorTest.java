@@ -10,7 +10,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/** Provas da estrutura do padrão: extensibilidade por visitantes e organização das classes. */
 class PadraoVisitorTest {
 
     private static LinhaProducao planta() {
@@ -25,7 +24,6 @@ class PadraoVisitorTest {
 
     @Test
     void novaOperacaoDeveSerAdicionadaSemAlterarNenhumElemento() {
-        // Operação criada só neste teste: soma de horas de operação de toda a árvore.
         Visitante<Integer> somaHoras = new Visitante<>() {
             public Integer visitar(SensorTemperatura s) {
                 return s.getHorasOperacao();
@@ -87,7 +85,6 @@ class PadraoVisitorTest {
 
     @Test
     void cadaElementoConcretoDeveDeclararOSeuProprioAceitar() throws NoSuchMethodException {
-        // Se aceitar fosse herdado, o tipo estático seria sempre o da superclasse e o despacho duplo falharia.
         for (Class<?> c : List.of(SensorTemperatura.class, SensorPressao.class, SensorVibracao.class,
                 LinhaProducao.class)) {
             Method m = c.getDeclaredMethod("aceitar", Visitante.class);
@@ -115,7 +112,6 @@ class PadraoVisitorTest {
 
     @Test
     void elementosNaoDevemConhecerOsVisitantesConcretos() {
-        // Os elementos só dependem da interface Visitante, nunca de RelatorioVisitante, AvaliadorRisco etc.
         for (Class<?> c : List.of(Sensor.class, SensorTemperatura.class, SensorPressao.class, SensorVibracao.class,
                 LinhaProducao.class, Elemento.class)) {
             for (Method m : c.getDeclaredMethods()) {

@@ -46,7 +46,6 @@ class AvaliadorRiscoTest {
 
     @Test
     void mesmoValorDeveTerGravidadeDiferenteConformeOTipoDoSensor() {
-        // 8,0 é alerta de pressão, crítico de vibração e perfeitamente normal de temperatura.
         assertEquals(Nivel.NORMAL, temp(8.0));
         assertEquals(Nivel.ALERTA, pressao(8.0));
         assertEquals(Nivel.CRITICO, vibracao(8.0));
@@ -55,16 +54,16 @@ class AvaliadorRiscoTest {
     @Test
     void linhaDeveTerOPiorNivelDosFilhos() {
         LinhaProducao linha = new LinhaProducao("L1",
-                new SensorTemperatura("T", 0, 70),      // NORMAL
-                new SensorPressao("P", 0, 9),           // ALERTA
-                new SensorVibracao("V", 0, 8));         // CRITICO
+                new SensorTemperatura("T", 0, 70),
+                new SensorPressao("P", 0, 9),
+                new SensorVibracao("V", 0, 8));
 
         assertEquals(Nivel.CRITICO, linha.aceitar(risco));
     }
 
     @Test
     void linhaDeveConsiderarLinhasAninhadas() {
-        LinhaProducao interna = new LinhaProducao("L2", new SensorPressao("P", 0, 12));   // CRITICO
+        LinhaProducao interna = new LinhaProducao("L2", new SensorPressao("P", 0, 12));
         LinhaProducao externa = new LinhaProducao("L1", new SensorTemperatura("T", 0, 70), interna);
 
         assertEquals(Nivel.CRITICO, externa.aceitar(risco));

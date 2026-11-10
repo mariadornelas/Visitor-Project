@@ -5,10 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * ConcreteElement composto: agrupa sensores e outras linhas (estrutura em árvore).
- * Imutável. Quem percorre os filhos é o visitante, que decide como combinar os resultados.
- */
 public class LinhaProducao implements Elemento {
 
     private final String nome;

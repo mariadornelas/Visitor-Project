@@ -39,12 +39,12 @@ class PlanoManutencaoTest {
     @Test
     void linhaDeveJuntarOsVencidosNaOrdemDaTravessiaIncluindoAninhadas() {
         LinhaProducao interna = new LinhaProducao("L2",
-                new SensorTemperatura("T-02", 2500, 70),   // vencido
-                new SensorPressao("P-02", 100, 5));         // em dia
+                new SensorTemperatura("T-02", 2500, 70),
+                new SensorPressao("P-02", 100, 5));
         LinhaProducao externa = new LinhaProducao("L1",
-                new SensorTemperatura("T-01", 1500, 85),   // em dia
-                new SensorPressao("P-01", 1200, 6.5),       // vencido
-                new SensorVibracao("V-01", 300, 8),         // em dia
+                new SensorTemperatura("T-01", 1500, 85),
+                new SensorPressao("P-01", 1200, 6.5),
+                new SensorVibracao("V-01", 300, 8),
                 interna);
 
         assertEquals(List.of("P-01", "T-02"), externa.aceitar(plano));
@@ -61,6 +61,6 @@ class PlanoManutencaoTest {
         LinhaProducao linha = new LinhaProducao("L1", new SensorPressao("P", 2000, 5));
 
         assertEquals(List.of("P"), linha.aceitar(plano));
-        assertEquals(List.of("P"), linha.aceitar(plano));   // não duplica na segunda vez
+        assertEquals(List.of("P"), linha.aceitar(plano));
     }
 }

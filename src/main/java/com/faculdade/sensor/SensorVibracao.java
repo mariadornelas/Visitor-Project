@@ -1,6 +1,5 @@
 package com.faculdade.sensor;
 
-/** ConcreteElement: velocidade de vibração em mm/s. */
 public class SensorVibracao extends Sensor {
 
     private final double mmPorSegundo;

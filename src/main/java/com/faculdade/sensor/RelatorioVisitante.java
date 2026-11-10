@@ -3,7 +3,6 @@ package com.faculdade.sensor;
 import java.util.Locale;
 import java.util.StringJoiner;
 
-/** ConcreteVisitor 1: gera o texto do relatório, formatando cada tipo de sensor à sua maneira. */
 public class RelatorioVisitante implements Visitante<String> {
 
     @Override
@@ -29,7 +28,7 @@ public class RelatorioVisitante implements Visitante<String> {
         StringJoiner texto = new StringJoiner("\n");
         texto.add("Linha " + linha.getNome() + ":");
         for (Elemento filho : linha.getElementos()) {
-            filho.aceitar(this).lines().forEach(l -> texto.add("  " + l));   // recuo por nível
+            filho.aceitar(this).lines().forEach(l -> texto.add("  " + l));
         }
         return texto.toString();
     }
